@@ -1,12 +1,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  creationTimestamp: "2024-05-01T17:51:14Z"
   labels:
     kubernetes.io/metadata.name: guestbook
   name: guestbook
-  resourceVersion: "9377"
-  uid: 7dcffd88-09e2-4ccc-8a59-cbda4d0e6990
 spec:
   finalizers:
   - kubernetes
