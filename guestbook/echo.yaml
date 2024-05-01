@@ -2,12 +2,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  creationTimestamp: "2024-05-01T17:49:11Z"
   labels:
     kubernetes.io/metadata.name: echo
   name: echo
-  resourceVersion: "9018"
-  uid: 109ed6d8-149a-4395-948f-ce2ed97cc599
 spec:
   finalizers:
   - kubernetes
