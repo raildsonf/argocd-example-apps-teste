@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2024-05-01T17:49:11Z"
+  labels:
+    kubernetes.io/metadata.name: echo
+  name: echo
+  resourceVersion: "9018"
+  uid: 109ed6d8-149a-4395-948f-ce2ed97cc599
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echoserver
+  namespace: echo
+spec:
+  selector:
+    matchLabels:
+      app: echoserver
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: echoserver
+    spec:
+      containers:
+      - image: k8s.gcr.io/e2e-test-images/echoserver:2.5
+        name: echoserver
+        ports:
+        - containerPort: 8080
+      tolerations:
+      - key: "apps"
+        value: "true"
+        effect: "NoSchedule"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echoserver
+  namespace: echo
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  type: ClusterIP
+  selector:
+    app: echoserver
